@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
+
+/*
+<uniquifier>: Use a unique and descriptive class name
+<weight>: Use a value from 100 to 1000
+*/
+
+.dm-sans-400 {
+  font-family: "DM Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.squada-one-bold {
+    font-family: "Squada One", sans-serif;
+    font-weight: 500;
+    font-style: bold;
+}
+
+body {
+    background-color: green;
+    margin: 0.25em 1em;
+}
+
+.main {
+    margin: 0.5em auto;
+    max-width: 32em;
+    min-width: 16em;
+    box-shadow: -1px -1px black, 2px 2px black;
+    padding: 0.25em 1em;
+    background-color: lightgrey;
+    border-radius: 1em;;
+}
+
+.title > h1 {
+    text-align: center;
+    font-size: 3em;    
+}
+
+.picker, .selected, .controls {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 0.5em 0em;
+}
+
+.selected {
+    background-color: #888;
+    border: inset grey 1px;
+    border-radius: 0.5em;
+    padding: 1em;
+    min-height: 4em;
+    margin: 1em 0em;    
+}
+
+.dice {
+    width: 4em;
+    height: 4em;
+    margin: 0.25em;
+    cursor: pointer;
+    border-radius: 0.5em;
+    transition: box-shadow 250ms ease-in;
+}
+
+.dice:hover {
+    border-radius: 0.5em;
+    box-shadow: 0.1em 0.1em 0.2em 0.2em white, -0.1em -0.1em 0.2em 0.2em white;
+    transition: box-shadow 250ms ease-out;
+}
+
+.button {
+    margin: auto;
+    max-width: 16em;
+    min-width: 8em;
+    box-shadow: -1px -1px black, 2px 2px black;
+    padding: 1em;
+    background-color: white;
+    border-radius: 1em;
+    text-align: center;
+    cursor: pointer;
+}
+
+.recruit {
+    background-image: url("../images/dice-symbols/Bullet1X.png");
+    background-size: cover;
+}
+
+.veteran {
+    background-image: url("../images/dice-symbols/Bullet2X.png");
+    background-size: cover;
+}
+
+.heavy {
+    background-image: url("../images/dice-symbols/Bullet3X.png");
+    background-size: cover;
+}
+
+.recon {
+    background-image: url("../images/dice-symbols/Knife.png");
+    background-size: cover;
+}
+
+.diver {
+    background-image: url("../images/dice-symbols/Trident.png");
+    background-size: cover;
+}
+
+.sniper {
+    background-image: url("../images/dice-symbols/Crosshair.png");
+    background-size: cover;
+}
+
+.engineer {
+    background-image: url("../images/dice-symbols/Mine.png");
+    background-size: cover;
+}
+
+.guerilla-ak {
+    background-image: url("../images/dice-symbols/Bullet2X.png");
+    background-size: cover;
+}
+
+.guerilla-rpg {
+    background-image: url("../images/dice-symbols/Explosion.png");
+    background-size: cover;
+}

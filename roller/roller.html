@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MERCS Dice Roller</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../js/roller.js"></script>
+</head>
+<body>
+    <div class="main dm-sans-400">
+        <div class="title">
+            <h1 class="squada-one-bold">MERCS Dice Roller</h1>
+            <p>Welcome to the MERCS tabletop dice roller companion app.</p>
+        </div>
+        <div>
+            <h2 class="squada-one-bold">Select dices</h2>
+            <p>Pick dices you want to roll.</p>
+            <div class="picker">
+                <div class="dice recruit" onclick="addDice('recruit')"></div>
+                <div class="dice veteran"  onclick="addDice('veteran')"></div>
+                <div class="dice heavy"  onclick="addDice('heavy')"></div>
+                <div class="dice recon"  onclick="addDice('recon')"></div>
+                <div class="dice diver"  onclick="addDice('diver')"></div>
+                <div class="dice sniper"  onclick="addDice('sniper')"></div>
+                <div class="dice engineer"  onclick="addDice('engineer')"></div>
+                <div class="dice guerilla-ak"  onclick="addDice('guerilla-ak')"></div>
+                <div class="dice guerilla-rpg"  onclick="addDice('guerilla-rpg')"></div>
+            </div>
+        </div>
+        <div>
+            <h2 class="squada-one-bold">Selected</h2>
+            <div class="selected" id="tray">
+
+            </div>
+        </div>
+        
+        <div class="controls">
+            
+            <div class="button clear" onclick="clearDices()">Clear</div>
+            <div class="button roll">Roll</div>
+        </div>
+
+        <div class="dice-card">
+
+        </div>
+    </div>
+</body>
+</html>
