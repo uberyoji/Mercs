@@ -110,6 +110,7 @@ h2 {
 
 .selectable {
     cursor: pointer;
+    user-select: none;
 }
 
 .selectable:hover {
