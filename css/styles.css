@@ -113,10 +113,12 @@ h2 {
     user-select: none;
 }
 
-.selectable:hover {
-    border-radius: 0.5em;
-    box-shadow: 0.1em 0.1em 0.2em 0.2em white, -0.1em -0.1em 0.2em 0.2em white;
-    transition: box-shadow 250ms ease-out;
+@media (hover: hover) {
+    .selectable:hover {
+        border-radius: 0.5em;
+        box-shadow: 0.1em 0.1em 0.2em 0.2em white, -0.1em -0.1em 0.2em 0.2em white;
+        transition: box-shadow 250ms ease-out;
+    }
 }
 
 .dice {
