@@ -3,12 +3,12 @@ var dicepool = [];
 function getFaces() {
 
     var faces = {
-        "bullet1x"  : { "image": "images/dice-symbols/Bullet1x.png", "bullets": 1 },
-        "bullet2x"  : { "image": "images/dice-symbols/Bullet2x.png", "bullets": 2 },        
+        "bullet1x"  : { "image": "images/dice-symbols/Bullet1X.png", "bullets": 1 },
+        "bullet2x"  : { "image": "images/dice-symbols/Bullet2X.png", "bullets": 2 },        
         "smoke"     : { "image": "images/dice-symbols/Smoke.png", "smoke": 1 },
         "explosion" : { "image": "images/dice-symbols/Explosion.png", "explosion": 1 },
         
-        "bullet3x"  : { "image": "images/dice-symbols/Bullet3x.png", "bullets": 3 },
+        "bullet3x"  : { "image": "images/dice-symbols/Bullet3X.png", "bullets": 3 },
         "grenade"   : { "image": "images/dice-symbols/Grenade.png", "grenade": 1 },
         
         "binoculars": { "image": "images/dice-symbols/Binoculars.png", "binoculars": 1 },
