@@ -178,7 +178,7 @@ function animateDiceRoll() {
             
             dice.style.backgroundImage = path; 
 
-            dice.animation="bob 10ms linear infinite";
+            // dice.animation="bob 10ms linear infinite";
 
             // console.log("animating "+rand);
         } );
