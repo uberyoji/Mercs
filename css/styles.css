@@ -5,6 +5,14 @@
 <uniquifier>: Use a unique and descriptive class name
 <weight>: Use a value from 100 to 1000
 */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dice-size: 3em;
+}
 
 .dm-sans-400 {
   font-family: "DM Sans", serif;
@@ -21,65 +29,114 @@
 
 body {
     background-color: green;
-    margin: 0.25em 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 0.25em;
 }
 
-.main {
-    margin: 0.5em auto;
+h2 {
+    margin-top: 0.5em;
+    margin-bottom: 0.1em;
+    text-align: center;
+}
+
+.help {
+    display: none;
+}
+
+.main, .roller {    
     max-width: 32em;
     min-width: 16em;
     box-shadow: -1px -1px black, 2px 2px black;
     padding: 0.25em 1em;
     background-color: lightgrey;
-    border-radius: 1em;;
+    border-radius: 1em;
+}
+
+.main {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .title > h1 {
     text-align: center;
-    font-size: 3em;    
+    font-size: 3em;
 }
 
 .picker, .selected, .controls {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin: 0.5em 0em;
+}
+
+.controls {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.roller-backdrop {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw; /*100%;*/
+    height: 100vh; /*100%;*/
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+
+    display: none;
+}
+
+.roller {
+    position: fixed;
+    z-index: 2;
+    left: 50%;
+    top: 25%;
+    background-color: lightgrey;    
+    transform: translate(-50%, 0);
+    max-width: 32em;
+    min-width: 16em;
 }
 
 .selected {
     background-color: #888;
-    border: inset grey 1px;
+    outline: inset grey 1px;
     border-radius: 0.5em;
-    padding: 1em;
+    padding: 0.5em;
     min-height: 4em;
-    margin: 1em 0em;    
+    margin: 0em;
 }
 
-.dice {
-    width: 4em;
-    height: 4em;
-    margin: 0.25em;
+.selectable {
     cursor: pointer;
-    border-radius: 0.5em;
-    transition: box-shadow 250ms ease-in;
 }
 
-.dice:hover {
+.selectable:hover {
     border-radius: 0.5em;
     box-shadow: 0.1em 0.1em 0.2em 0.2em white, -0.1em -0.1em 0.2em 0.2em white;
     transition: box-shadow 250ms ease-out;
 }
 
+.dice {
+    width: var(--dice-size); 
+    height: var(--dice-size); 
+    border-radius: 0.5em;
+    transition: box-shadow 250ms ease-in;
+    margin: 0.25em;
+}
+
 .button {
-    margin: auto;
-    max-width: 16em;
-    min-width: 8em;
+    max-width: 8em;
+    min-width: 4em;
     box-shadow: -1px -1px black, 2px 2px black;
-    padding: 1em;
+    padding: 0.5em;
     background-color: white;
     border-radius: 1em;
     text-align: center;
     cursor: pointer;
+    font-size: 1.5em;
+    margin: 0.25em;
 }
 
 .recruit {
@@ -125,4 +182,9 @@ body {
 .guerilla-rpg {
     background-image: url("../images/dice-symbols/Explosion.png");
     background-size: cover;
+}
+
+@keyframes bob {
+    0%   { transform: translateY(-0.5em)  }
+    100% { transform: translateY(0) }
 }

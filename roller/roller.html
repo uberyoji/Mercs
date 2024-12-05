@@ -11,39 +11,56 @@
     <div class="main dm-sans-400">
         <div class="title">
             <h1 class="squada-one-bold">MERCS Dice Roller</h1>
-            <p>Welcome to the MERCS tabletop dice roller companion app.</p>
+            <p class="help">Welcome to the MERCS tabletop dice roller companion app.</p>
         </div>
         <div>
             <h2 class="squada-one-bold">Select dices</h2>
-            <p>Pick dices you want to roll.</p>
+            <p class="help">Pick dices you want to roll.</p>
             <div class="picker">
-                <div class="dice recruit" onclick="addDice('recruit')"></div>
-                <div class="dice veteran"  onclick="addDice('veteran')"></div>
-                <div class="dice heavy"  onclick="addDice('heavy')"></div>
-                <div class="dice recon"  onclick="addDice('recon')"></div>
-                <div class="dice diver"  onclick="addDice('diver')"></div>
-                <div class="dice sniper"  onclick="addDice('sniper')"></div>
-                <div class="dice engineer"  onclick="addDice('engineer')"></div>
-                <div class="dice guerilla-ak"  onclick="addDice('guerilla-ak')"></div>
-                <div class="dice guerilla-rpg"  onclick="addDice('guerilla-rpg')"></div>
+                <div class="dice selectable recruit" onclick="addDice('recruit')"></div>
+                <div class="dice selectable veteran"  onclick="addDice('veteran')"></div>
+                <div class="dice selectable heavy"  onclick="addDice('heavy')"></div>
+                <div class="dice selectable recon"  onclick="addDice('recon')"></div>
+                <div class="dice selectable diver"  onclick="addDice('diver')"></div>
+                <div class="dice selectable sniper"  onclick="addDice('sniper')"></div>
+                <div class="dice selectable engineer"  onclick="addDice('engineer')"></div>
+                <div class="dice selectable guerilla-ak"  onclick="addDice('guerilla-ak')"></div>
+                <div class="dice selectable guerilla-rpg"  onclick="addDice('guerilla-rpg')"></div>
             </div>
         </div>
         <div>
             <h2 class="squada-one-bold">Selected</h2>
+            <p class="help">Selected dices are shown here. Click on any dice you want to remove or click on <b>Clear</b> to remove all dices.</p>
+            <p class="help">Click on <b>Roll</b> when you are ready.</p>
             <div class="selected" id="tray">
-
+                
             </div>
         </div>
         
-        <div class="controls">
-            
-            <div class="button clear" onclick="clearDices()">Clear</div>
-            <div class="button roll">Roll</div>
+        <div class="controls">            
+            <div class="button squada-one-bold selectable clear" onclick="clearDices()">Clear</div>
+            <div class="button squada-one-bold selectable roll" onclick="rollDices()">Roll</div>
         </div>
 
         <div class="dice-card">
 
         </div>
+
+        <div class="roller-backdrop" id="roller-modal">
+            
+            <div class="roller">
+                <h2 class="squada-one-bold">Dice Roll</h2>
+                <div class="selected" id="roller-tray">
+                </div>                
+                <div class="results" id="roller-results">
+                </div>
+                <div class="controls">
+                    <div class="button selectable squada-one-bold roll-again" onclick="animateDiceRoll()">Re-roll</div>
+                    <div class="button selectable squada-one-bold close" onclick="closeRoller()">Close</div>
+                </div>
+            </div>
+        </div>
     </div>
+    
 </body>
 </html>

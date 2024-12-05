@@ -1,6 +1,4 @@
-function log() {
-    console.log("click");
-}
+var dicepool = [];
 
 function getFaces() {
 
@@ -26,6 +24,13 @@ function getFaces() {
         "spade"   : { "image": "images/dice-symbols/Grenade.png", "spade": 1 }
     }
 
+    return faces;
+}
+
+const faces = getFaces();
+
+function getDiceData() {
+            
     var dices = {
         "recruit": {
             faces: [
@@ -54,15 +59,58 @@ function getFaces() {
         },
         "diver": {
             faces: [
-                faces.bullet1x, faces.bullet1x, faces.rifle, faces.rifle, faces.rifle, faces.crosshair
+                faces.bullet1x, faces.bullet1x, faces.flippers, faces.flippers, faces.flippers, faces.trident
             ]
         },
         "engineer": {
             faces: [
-                faces.bullet1x, faces.bullet1x, faces.rifle, faces.rifle, faces.rifle, faces.crosshair
+                faces.bullet1x, faces.bullet1x, faces.spade, faces.spade, faces.spade, faces.mine
             ]
         },
     }
+
+    return dices;
+}
+
+function rollDices() {
+
+    const dicedata = getDiceData();
+
+    dicepool = []; // clear the dice pool
+
+    let dicetray = document.getElementById("tray");
+    let rollertray = document.getElementById("roller-tray");
+
+    while (rollertray.firstChild) {
+        rollertray.firstChild.remove();
+    }
+
+    const dices = Array.from(dicetray.children);
+   
+    dices.forEach( dice => {
+
+        let type = dice.getAttribute("data-dicetype");
+        dicepool.push( structuredClone( dicedata[type] ) );
+
+        let rdice = document.createElement("div");
+        rdice.classList = "dice " + type;
+        rdice.setAttribute("data-dicetype", type);
+        
+        rollertray.appendChild(rdice);
+        
+    });
+
+    // console.log(dicepool);
+
+    let modal = document.getElementById("roller-modal");
+    modal.style.display = 'block';
+
+    animateDiceRoll();
+}
+
+function closeRoller() {
+    let modal = document.getElementById("roller-modal");
+    modal.style.display = 'none';
 }
 
 function clearDices() {
@@ -70,6 +118,7 @@ function clearDices() {
     while (parent.firstChild) {
         parent.firstChild.remove();
     }
+    dicepool = [];
 }
 
 function removeDice( dice ) {
@@ -78,11 +127,63 @@ function removeDice( dice ) {
 
 function addDice( type ) {
     let parent = document.getElementById("tray");
-    if( parent.children.length < 12 ) {
+    if( parent.children.length < 15 ) {
         var dice = document.createElement("div");
-        dice.classList = "dice " + type;
+        dice.classList = "dice selectable " + type;
         dice.onclick = function() { removeDice(dice); };
+        dice.setAttribute("data-dicetype", type);
         
         parent.appendChild(dice);
     }    
 }
+
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function animateDiceRoll() {
+
+    let id = null;
+
+    let count = 30;
+    clearInterval(id);
+    id = setInterval(frame, 25);
+
+    function frame() {
+      if (--count == 0) {
+        
+        clearInterval(id);
+        
+      } else {
+
+        let rollertray = document.getElementById("roller-tray");
+        const dices = Array.from(rollertray.children);
+
+        var dicedata = getDiceData();
+        
+        var rand = 0;
+        var image;
+   
+        dices.forEach( dice => {
+
+            var dicetype = dicedata[dice.getAttribute("data-dicetype")];
+            var faces = dicetype.faces;
+            
+            rand = getRandomIntInclusive(0,5);
+            var image = faces[rand].image;
+    
+            let path = `url("../${ image }")`;
+            
+            dice.style.backgroundImage = path; 
+
+            dice.animation="bob 10ms linear infinite";
+
+            // console.log("animating "+rand);
+        } );
+
+      }
+    }
+//    console.log("animateDiceRoll end");
+  }
