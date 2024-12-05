@@ -113,9 +113,9 @@ h2 {
     user-select: none;
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .selectable:hover {
-        border-radius: 0.5em;
+        /*border-radius: 0.5em;*/
         box-shadow: 0.1em 0.1em 0.2em 0.2em white, -0.1em -0.1em 0.2em 0.2em white;
         transition: box-shadow 250ms ease-out;
     }
@@ -132,12 +132,12 @@ h2 {
 .button {
     max-width: 8em;
     min-width: 4em;
-    box-shadow: -1px -1px black, 2px 2px black;
+    outline: solid black 1px;
+    /*box-shadow: -1px -1px black, 2px 2px black;*/
     padding: 0.5em;
     background-color: white;
     border-radius: 1em;
-    text-align: center;
-    cursor: pointer;
+    text-align: center;    
     font-size: 1.5em;
     margin: 0.25em;
 }
@@ -178,12 +178,12 @@ h2 {
 }
 
 .guerilla-ak {
-    background-image: url("../images/dice-symbols/Bullet2X.png");
+    background-image: url("../images/dice-symbols/GuerillaAK.png");
     background-size: cover;
 }
 
 .guerilla-rpg {
-    background-image: url("../images/dice-symbols/Explosion.png");
+    background-image: url("../images/dice-symbols/GuerillaRPG.png");
     background-size: cover;
 }
 

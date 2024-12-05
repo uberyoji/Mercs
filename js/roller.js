@@ -67,6 +67,16 @@ function getDiceData() {
                 faces.bullet1x, faces.bullet1x, faces.spade, faces.spade, faces.spade, faces.mine
             ]
         },
+        "guerilla-ak": {
+            faces: [
+                faces.bullet1x, faces.bullet1x, faces.bullet2x, faces.bullet2x, faces.bullet2x, faces.bullet2x
+            ]
+        },
+        "guerilla-rpg": {
+            faces: [
+                faces.bullet1x, faces.explosion, faces.bullet1x, faces.explosion, faces.bullet1x, faces.explosion
+            ]
+        },
     }
 
     return dices;
