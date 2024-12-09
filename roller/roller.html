@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MERCS Dice Roller</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/dices.css">
+    <link rel="stylesheet" href="../css/icons.css">
     <script src="../js/roller.js"></script>
 </head>
 <body>
@@ -16,17 +18,20 @@
         <div>
             <h2 class="squada-one-bold">Select dices</h2>
             <p class="help">Pick dices you want to roll.</p>
-            <div class="picker">
-                <div class="dice selectable recruit" onclick="addDice('recruit')"></div>
-                <div class="dice selectable veteran"  onclick="addDice('veteran')"></div>
-                <div class="dice selectable heavy"  onclick="addDice('heavy')"></div>
-                <div class="dice selectable recon"  onclick="addDice('recon')"></div>
-                <div class="dice selectable diver"  onclick="addDice('diver')"></div>
-                <div class="dice selectable sniper"  onclick="addDice('sniper')"></div>
-                <div class="dice selectable engineer"  onclick="addDice('engineer')"></div>
-                <div class="dice selectable guerilla-ak"  onclick="addDice('guerilla-ak')"></div>
-                <div class="dice selectable guerilla-rpg"  onclick="addDice('guerilla-rpg')"></div>
+            <div class="tray">
+                <div class="picker">
+                    <div class="dice selectable recruit" onclick="addDice('recruit')"></div>
+                    <div class="dice selectable veteran"  onclick="addDice('veteran')"></div>
+                    <div class="dice selectable heavy"  onclick="addDice('heavy')"></div>
+                    <div class="dice selectable recon"  onclick="addDice('recon')"></div>
+                    <div class="dice selectable diver"  onclick="addDice('diver')"></div>
+                    <div class="dice selectable sniper"  onclick="addDice('sniper')"></div>
+                    <div class="dice selectable engineer"  onclick="addDice('engineer')"></div>
+                    <div class="dice selectable guerilla-ak"  onclick="addDice('guerilla-ak')"></div>
+                    <div class="dice selectable guerilla-rpg"  onclick="addDice('guerilla-rpg')"></div>
+                </div>
             </div>
+            
         </div>
         <div>
             <h2 class="squada-one-bold">Selected</h2>
@@ -51,12 +56,16 @@
             <div class="roller">
                 <h2 class="squada-one-bold">Dice Roll</h2>
                 <div class="selected" id="roller-tray">
-                </div>                
-                <div class="results" id="roller-results">
-                </div>
+                </div>               
+                
                 <div class="controls">
                     <div class="button selectable squada-one-bold roll-again" onclick="animateDiceRoll()">Re-roll</div>
                     <div class="button selectable squada-one-bold close" onclick="closeRoller()">Close</div>
+                </div>
+                <div id="roller-results">
+                    <h2 class="squada-one-bold">Results</h2>
+                    <div class="results" id="results-tray">                        
+                    </div>
                 </div>
             </div>
         </div>

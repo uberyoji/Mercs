@@ -1,29 +1,102 @@
 var dicepool = [];
 
+function getFaceArray() {
+    return [
+        { 
+            "name": "bullet1x",
+            "image": "images/dice-symbols/Bullet1X.png", 
+            "icon": "images/icons/bullet1x.png", 
+            "type": "bullets", "value": 1 
+        },
+        {
+            "name": "bullet2x",
+            "image": "images/dice-symbols/Bullet2X.png", 
+            "icon": "images/icons/bullet1x.png", 
+            "type":"bullets", "value": 2 
+        },
+        { 
+            "name": "smoke",
+            "image": "images/dice-symbols/Smoke.png", 
+            "icon": "images/icons/bullet1x.png", 
+            "type":"smoke", "value": 1 
+        },
+        { 
+            "name": "explosion",
+            "image": "images/dice-symbols/Explosion.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"explosion", "value": 1 
+        },
+        { 
+            "name": "bullet3x",
+            "image": "images/dice-symbols/Bullet3X.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"bullets", "value": 3 
+        },
+        {
+            "name": "grenade",
+            "image": "images/dice-symbols/Grenade.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"grenade", "value": 1 
+        },
+        { 
+            "name": "binoculars",
+            "image": "images/dice-symbols/Binoculars.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"binoculars", "value": 1 
+        },
+        { 
+            "name": "knife",
+            "image": "images/dice-symbols/Knife.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"knife", "value": 1 
+        },
+        { 
+            "name": "crosshair",
+            "image": "images/dice-symbols/Crosshair.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"crosshair", "value": 1 
+        },
+        { 
+            "name": "rifle",
+            "image": "images/dice-symbols/RifleBullet.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"rifle", "value": 1 
+        },
+        { 
+            "name": "flippers",
+            "image": "images/dice-symbols/Flippers.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"flippers", "value": 1
+        },
+        {
+            "name":  "trident", 
+            "image": "images/dice-symbols/Trident.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"trident", "value": 1 
+        },
+        { 
+            "name": "mine",
+            "image": "images/dice-symbols/Mine.png", 
+            "icon":"images/icons/bullet1x.png", 
+            "type":"mine", "value": 1 
+        },
+        { 
+            "name": "spade",
+            "image": "images/dice-symbols/Spade.png", 
+            "icon": "images/icons/bullet1x.png", 
+            "type": "spade", "value": 1 
+        }
+    ];
+}
+
 function getFaces() {
 
-    var faces = {
-        "bullet1x": { "image": "images/dice-symbols/Bullet1X.png", "bullets": 1 },
-        "bullet2x": { "image": "images/dice-symbols/Bullet2X.png", "bullets": 2 },
-        "smoke": { "image": "images/dice-symbols/Smoke.png", "smoke": 1 },
-        "explosion": { "image": "images/dice-symbols/Explosion.png", "explosion": 1 },
+    let faces_array = getFaceArray();
 
-        "bullet3x": { "image": "images/dice-symbols/Bullet3X.png", "bullets": 3 },
-        "grenade": { "image": "images/dice-symbols/Grenade.png", "grenade": 1 },
+    var faces = {}
 
-        "binoculars": { "image": "images/dice-symbols/Binoculars.png", "binoculars": 1 },
-        "knife": { "image": "images/dice-symbols/Knife.png", "knife": 1 },
-
-        "crosshair": { "image": "images/dice-symbols/Crosshair.png", "crosshair": 1 },
-        "rifle": { "image": "images/dice-symbols/RifleBullet.png", "rifle": 1 },
-
-        "flippers": { "image": "images/dice-symbols/Flippers.png", "flippers": 3 },
-        "trident": { "image": "images/dice-symbols/Trident.png", "trident": 1 },
-
-        "mine": { "image": "images/dice-symbols/Mine.png", "mine": 1 },
-        "spade": { "image": "images/dice-symbols/Spade.png", "spade": 1 }
-    }
-
+    faces_array.forEach( face => { faces[face.name] = face } );
+    
     return faces;
 }
 
@@ -136,7 +209,7 @@ function removeDice(dice) {
 
 function addDice(type) {
     let parent = document.getElementById("tray");
-    if (parent.children.length < 16) {
+    if (parent.children.length < 15) {
         var dice = document.createElement("div");
         dice.classList = "dice selectable " + type;
         dice.onclick = function () { removeDice(dice); };
@@ -154,9 +227,10 @@ function getRandomIntInclusive(min, max) {
 
 function animateDiceRoll() {
 
-    let id = null;
+    clearResults();
 
-    let count = 16*15;
+    let id = null;
+    
     clearInterval(id);
     id = setInterval(frame, 15);
 
@@ -165,11 +239,15 @@ function animateDiceRoll() {
 
     dices.map(dice => { dice.classList.remove("bob-animation"); dice.classList.add("roll-fx"); });
 
+    let count = (dices.length) * 15;
+
     function frame() {
 
         if (--count == 0) {
 
             clearInterval(id);
+
+            gatherResults();
 
         } else {
 
@@ -183,8 +261,6 @@ function animateDiceRoll() {
 
                     dice.classList.add("bob-animation");
                     dice.classList.remove("roll-fx");
-                    // dice.style.animation = "bob 200ms ease-in";
-
                 }
                 else if (10*(dices.length - dindex) < count) {
                     var dicetype = dicedata[dice.getAttribute("data-dicetype")];
@@ -196,6 +272,7 @@ function animateDiceRoll() {
                     let path = `url("../${image}")`;
 
                     dice.style.backgroundImage = path;
+                    dice.setAttribute("data-facename", faces[rand].name );
                 }
 
                 ++dindex;
@@ -205,5 +282,56 @@ function animateDiceRoll() {
 
         }
     }
+
+    
+
     //    console.log("animateDiceRoll end");
+}
+
+function clearResults() {
+    var resulttray = document.getElementById("results-tray");
+    while (resulttray.firstChild) {
+        resulttray.firstChild.remove();
+    }
+    document.getElementById("roller-results").style.display = "none";
+}
+
+function gatherResults() {
+    var rollertray = document.getElementById("roller-tray");
+    const dices = Array.from(rollertray.children);
+
+    const faces = getFaces();
+    const face_array = getFaceArray();
+    
+    var results = {};
+    
+    face_array.forEach( face => { results[face.type] = 0; } );
+
+    dices.forEach(dice => { 
+
+        let facename = dice.getAttribute("data-facename");
+
+        let face = faces[facename];
+
+        results[face.type] += face.value;
+    } );
+
+
+    var resulttray = document.getElementById("results-tray");
+    for( const r in results ) {
+        if( results[r] > 0 ) {
+
+            var icon = document.createElement("div");
+            icon.classList.add("icon-" + r);
+            resulttray.appendChild(icon);
+
+            var value = document.createElement("div");
+            value.textContent = "x " + results[r];
+            resulttray.appendChild(value);
+        }
+    }
+
+    document.getElementById("roller-results").style.display = "block";
+
+    // console.log(results);
 }

@@ -45,8 +45,13 @@ h2 {
     display: none;
 }
 
+.tray {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+
 .main, .roller {    
-    max-width: 34em;
+    max-width: 36em;
     min-width: 16em;
     box-shadow: -1px -1px black, 2px 2px black;
     padding: 0.25em 1em;
@@ -77,11 +82,14 @@ h2 {
 
 .roller-backdrop {
     position: fixed;
-    z-index: 1;
     left: 0;
     top: 0;
+
+    z-index: 1;
+    
     width: 100vw; /*100%;*/
     height: 100vh; /*100%;*/
+
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
 
@@ -92,11 +100,11 @@ h2 {
     position: fixed;
     z-index: 2;
     left: 50%;
-    top: 25%;
+    top: 4em;
     background-color: lightgrey;    
     transform: translate(-50%, 0);
-    max-width: 32em;
-    min-width: 16em;
+    max-width: 36em;
+    min-width: 20em;
 }
 
 .selected {
@@ -142,57 +150,36 @@ h2 {
     margin: 0.25em;
 }
 
-.recruit {
-    background-image: url("../images/dice-symbols/Bullet1X.png");
-    background-size: cover;
-}
-
-.veteran {
-    background-image: url("../images/dice-symbols/Bullet2X.png");
-    background-size: cover;
-}
-
-.heavy {
-    background-image: url("../images/dice-symbols/Bullet3X.png");
-    background-size: cover;
-}
-
-.recon {
-    background-image: url("../images/dice-symbols/Knife.png");
-    background-size: cover;
-}
-
-.diver {
-    background-image: url("../images/dice-symbols/Trident.png");
-    background-size: cover;
-}
-
-.sniper {
-    background-image: url("../images/dice-symbols/Crosshair.png");
-    background-size: cover;
-}
-
-.engineer {
-    background-image: url("../images/dice-symbols/Mine.png");
-    background-size: cover;
-}
-
-.guerilla-ak {
-    background-image: url("../images/dice-symbols/GuerillaAK.png");
-    background-size: cover;
-}
-
-.guerilla-rpg {
-    background-image: url("../images/dice-symbols/GuerillaRPG.png");
-    background-size: cover;
-}
-
 .roll-fx {
     filter: blur(0.15em);
 }
 
 .bob-animation {
     animation: bob 250ms ease-out;
+}
+
+.results {
+    display: grid;
+    grid-template-columns: repeat( 2, 1fr 1fr);
+    grid-auto-rows: min-content;    
+    margin-bottom: 0.5em;
+}
+
+.results :nth-child(even) {
+    align-self: center;
+    justify-self: left;
+    font-family: "Squada One", sans-serif;
+    font-weight: 500;
+    font-style: bold;
+    font-size: 1.5em;
+}
+
+.results :nth-child(odd) {
+    align-self: center;
+    justify-self: right;
+    width: var(--dice-size); 
+    height: var(--dice-size); 
+    border-radius: 0.5em;
 }
 
 @keyframes bob {

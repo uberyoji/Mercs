@@ -1,0 +1,44 @@
+.recruit {
+    background-image: url("../images/dice-symbols/Bullet1X.png");
+    background-size: cover;
+}
+
+.veteran {
+    background-image: url("../images/dice-symbols/Bullet2X.png");
+    background-size: cover;
+}
+
+.heavy {
+    background-image: url("../images/dice-symbols/Bullet3X.png");
+    background-size: cover;
+}
+
+.recon {
+    background-image: url("../images/dice-symbols/Knife.png");
+    background-size: cover;
+}
+
+.diver {
+    background-image: url("../images/dice-symbols/Trident.png");
+    background-size: cover;
+}
+
+.sniper {
+    background-image: url("../images/dice-symbols/Crosshair.png");
+    background-size: cover;
+}
+
+.engineer {
+    background-image: url("../images/dice-symbols/Mine.png");
+    background-size: cover;
+}
+
+.guerilla-ak {
+    background-image: url("../images/dice-symbols/GuerillaAK.png");
+    background-size: cover;
+}
+
+.guerilla-rpg {
+    background-image: url("../images/dice-symbols/GuerillaRPG.png");
+    background-size: cover;
+}

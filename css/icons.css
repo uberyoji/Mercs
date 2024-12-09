@@ -1,0 +1,49 @@
+
+.icon-bullets {
+    background-image: url("../images/icons/bullet1x.png");
+    background-size: cover;
+}
+.icon-explosion {
+    background-image: url("../images/icons/explosion.png");
+    background-size: cover;
+}
+.icon-smoke {
+    background-image: url("../images/icons/smoke.png");
+    background-size: cover;
+}
+.icon-trident {
+    background-image: url("../images/icons/trident.png");
+    background-size: cover;
+}
+.icon-flippers {
+    background-image: url("../images/icons/flippers.png");
+    background-size: cover;
+}
+.icon-spade {
+    background-image: url("../images/icons/spade.png");
+    background-size: cover;
+}
+.icon-mine {
+    background-image: url("../images/icons/mine.png");
+    background-size: cover;
+}
+.icon-binoculars {
+    background-image: url("../images/icons/binoculars.png");
+    background-size: cover;
+}
+.icon-knife {
+    background-image: url("../images/icons/knife.png");
+    background-size: cover;
+}
+.icon-rifle-bullet {
+    background-image: url("../images/icons/rifle-bullet.png");
+    background-size: cover;
+}
+.icon-crosshair {
+    background-image: url("../images/icons/crosshair.png");
+    background-size: cover;
+}
+.icon-grenade {
+    background-image: url("../images/icons/grenade.png");
+    background-size: cover;
+}
