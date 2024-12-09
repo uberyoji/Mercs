@@ -3,25 +3,25 @@ var dicepool = [];
 function getFaces() {
 
     var faces = {
-        "bullet1x"  : { "image": "images/dice-symbols/Bullet1X.png", "bullets": 1 },
-        "bullet2x"  : { "image": "images/dice-symbols/Bullet2X.png", "bullets": 2 },        
-        "smoke"     : { "image": "images/dice-symbols/Smoke.png", "smoke": 1 },
-        "explosion" : { "image": "images/dice-symbols/Explosion.png", "explosion": 1 },
-        
-        "bullet3x"  : { "image": "images/dice-symbols/Bullet3X.png", "bullets": 3 },
-        "grenade"   : { "image": "images/dice-symbols/Grenade.png", "grenade": 1 },
-        
+        "bullet1x": { "image": "images/dice-symbols/Bullet1X.png", "bullets": 1 },
+        "bullet2x": { "image": "images/dice-symbols/Bullet2X.png", "bullets": 2 },
+        "smoke": { "image": "images/dice-symbols/Smoke.png", "smoke": 1 },
+        "explosion": { "image": "images/dice-symbols/Explosion.png", "explosion": 1 },
+
+        "bullet3x": { "image": "images/dice-symbols/Bullet3X.png", "bullets": 3 },
+        "grenade": { "image": "images/dice-symbols/Grenade.png", "grenade": 1 },
+
         "binoculars": { "image": "images/dice-symbols/Binoculars.png", "binoculars": 1 },
-        "knife"     : { "image": "images/dice-symbols/Knife.png", "knife": 1 },
+        "knife": { "image": "images/dice-symbols/Knife.png", "knife": 1 },
 
-        "crosshair" : { "image": "images/dice-symbols/Crosshair.png", "crosshair": 1 },
-        "rifle"     : { "image": "images/dice-symbols/RifleBullet.png", "rifle": 1 },
+        "crosshair": { "image": "images/dice-symbols/Crosshair.png", "crosshair": 1 },
+        "rifle": { "image": "images/dice-symbols/RifleBullet.png", "rifle": 1 },
 
-        "flippers"  : { "image": "images/dice-symbols/Flippers.png", "flippers": 3 },
-        "trident"   : { "image": "images/dice-symbols/Trident.png", "trident": 1 },
+        "flippers": { "image": "images/dice-symbols/Flippers.png", "flippers": 3 },
+        "trident": { "image": "images/dice-symbols/Trident.png", "trident": 1 },
 
-        "mine"  : { "image": "images/dice-symbols/Bullet3x.png", "mine": 1 },
-        "spade"   : { "image": "images/dice-symbols/Grenade.png", "spade": 1 }
+        "mine": { "image": "images/dice-symbols/Bullet3x.png", "mine": 1 },
+        "spade": { "image": "images/dice-symbols/Grenade.png", "spade": 1 }
     }
 
     return faces;
@@ -30,7 +30,7 @@ function getFaces() {
 const faces = getFaces();
 
 function getDiceData() {
-            
+
     var dices = {
         "recruit": {
             faces: [
@@ -96,18 +96,17 @@ function rollDices() {
     }
 
     const dices = Array.from(dicetray.children);
-   
-    dices.forEach( dice => {
+
+    dices.forEach(dice => {
 
         let type = dice.getAttribute("data-dicetype");
-        dicepool.push( structuredClone( dicedata[type] ) );
+        dicepool.push(structuredClone(dicedata[type]));
 
         let rdice = document.createElement("div");
         rdice.classList = "dice " + type;
         rdice.setAttribute("data-dicetype", type);
-        
         rollertray.appendChild(rdice);
-        
+
     });
 
     // console.log(dicepool);
@@ -131,20 +130,20 @@ function clearDices() {
     dicepool = [];
 }
 
-function removeDice( dice ) {
+function removeDice(dice) {
     dice.remove();
 }
 
-function addDice( type ) {
+function addDice(type) {
     let parent = document.getElementById("tray");
-    if( parent.children.length < 15 ) {
+    if (parent.children.length < 15) {
         var dice = document.createElement("div");
         dice.classList = "dice selectable " + type;
-        dice.onclick = function() { removeDice(dice); };
+        dice.onclick = function () { removeDice(dice); };
         dice.setAttribute("data-dicetype", type);
-        
+
         parent.appendChild(dice);
-    }    
+    }
 }
 
 function getRandomIntInclusive(min, max) {
@@ -157,43 +156,54 @@ function animateDiceRoll() {
 
     let id = null;
 
-    let count = 30;
+    let count = 120;
     clearInterval(id);
-    id = setInterval(frame, 25);
+    id = setInterval(frame, 15);
+
+    var rollertray = document.getElementById("roller-tray");
+    const dices = Array.from(rollertray.children);
+
+    dices.map(dice => { dice.classList.remove("bob-animation"); dice.classList.add("roll-fx"); });
 
     function frame() {
-      if (--count == 0) {
-        
-        clearInterval(id);
-        
-      } else {
 
-        let rollertray = document.getElementById("roller-tray");
-        const dices = Array.from(rollertray.children);
+        if (--count == 0) {
 
-        var dicedata = getDiceData();
-        
-        var rand = 0;
-        var image;
-   
-        dices.forEach( dice => {
+            clearInterval(id);
 
-            var dicetype = dicedata[dice.getAttribute("data-dicetype")];
-            var faces = dicetype.faces;
-            
-            rand = getRandomIntInclusive(0,5);
-            var image = faces[rand].image;
-    
-            let path = `url("../${ image }")`;
-            
-            dice.style.backgroundImage = path; 
+        } else {
 
-            // dice.animation="bob 10ms linear infinite";
+            var dicedata = getDiceData();
+            var rand = 0;
+            var dindex = 0;
 
-            // console.log("animating "+rand);
-        } );
+            dices.forEach(dice => {
 
-      }
+                if (10*(dices.length - dindex) == count) {
+
+                    dice.classList.add("bob-animation");
+                    dice.classList.remove("roll-fx");
+                    // dice.style.animation = "bob 200ms ease-in";
+
+                }
+                else if (10*(dices.length - dindex) < count) {
+                    var dicetype = dicedata[dice.getAttribute("data-dicetype")];
+                    var faces = dicetype.faces;
+
+                    rand = getRandomIntInclusive(0, 5);
+                    var image = faces[rand].image;
+
+                    let path = `url("../${image}")`;
+
+                    dice.style.backgroundImage = path;
+                }
+
+                ++dindex;
+
+                // console.log("animating "+rand);
+            });
+
+        }
     }
-//    console.log("animateDiceRoll end");
-  }
+    //    console.log("animateDiceRoll end");
+}

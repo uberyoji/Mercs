@@ -187,7 +187,15 @@ h2 {
     background-size: cover;
 }
 
+.roll-fx {
+    filter: blur(0.15em);
+}
+
+.bob-animation {
+    animation: bob 250ms ease-out;
+}
+
 @keyframes bob {
-    0%   { transform: translateY(-0.5em)  }
-    100% { transform: translateY(0) }
+    0%   { transform: translateY(0.8em); }
+    100% { transform: translateY(0.0em); }
 }
