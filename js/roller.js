@@ -239,7 +239,7 @@ function animateDiceRoll() {
 
     dices.map(dice => { dice.classList.remove("bob-animation"); dice.classList.add("roll-fx"); });
 
-    let count = (dices.length) * 15;
+    let count = (dices.length) * 12;
 
     function frame() {
 
