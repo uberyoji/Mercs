@@ -20,8 +20,8 @@ function getFaces() {
         "flippers": { "image": "images/dice-symbols/Flippers.png", "flippers": 3 },
         "trident": { "image": "images/dice-symbols/Trident.png", "trident": 1 },
 
-        "mine": { "image": "images/dice-symbols/Bullet3x.png", "mine": 1 },
-        "spade": { "image": "images/dice-symbols/Grenade.png", "spade": 1 }
+        "mine": { "image": "images/dice-symbols/Mine.png", "mine": 1 },
+        "spade": { "image": "images/dice-symbols/Spade.png", "spade": 1 }
     }
 
     return faces;
