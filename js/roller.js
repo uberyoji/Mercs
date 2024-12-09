@@ -136,7 +136,7 @@ function removeDice(dice) {
 
 function addDice(type) {
     let parent = document.getElementById("tray");
-    if (parent.children.length < 15) {
+    if (parent.children.length < 16) {
         var dice = document.createElement("div");
         dice.classList = "dice selectable " + type;
         dice.onclick = function () { removeDice(dice); };
@@ -156,7 +156,7 @@ function animateDiceRoll() {
 
     let id = null;
 
-    let count = 120;
+    let count = 16*15;
     clearInterval(id);
     id = setInterval(frame, 15);
 

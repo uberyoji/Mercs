@@ -46,7 +46,7 @@ h2 {
 }
 
 .main, .roller {    
-    max-width: 32em;
+    max-width: 34em;
     min-width: 16em;
     box-shadow: -1px -1px black, 2px 2px black;
     padding: 0.25em 1em;
