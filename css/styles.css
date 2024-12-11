@@ -110,15 +110,10 @@ h2 {
 .selected {
     background-color: #888;
     outline: inset grey 1px;
-    border-radius: 0.5em;
+    border-radius: 0.55em;
     padding: 0.5em;
     min-height: 4em;
     margin: 0em;
-}
-
-.selectable {
-    cursor: pointer;
-    user-select: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -132,9 +127,35 @@ h2 {
 .dice {
     width: var(--dice-size); 
     height: var(--dice-size); 
-    border-radius: 0.5em;
+    border-radius: 0.55em;
     transition: box-shadow 250ms ease-in;
     margin: 0.25em;
+}
+
+.selectable {
+    cursor: pointer;
+    user-select: none;
+}
+
+#roller-tray .selectable {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+}
+
+.hold {
+    outline: solid black 3px;
+}
+
+.hold::after {
+    content: "HOLD";    
+    display: inline-block;
+    position: relative;
+    top: -1.85em;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75em;
+    font-weight: 900;
 }
 
 .button {
@@ -179,7 +200,7 @@ h2 {
     justify-self: right;
     width: var(--dice-size); 
     height: var(--dice-size); 
-    border-radius: 0.5em;
+    border-radius: 0.55em;
 }
 
 @keyframes bob {
