@@ -35,6 +35,13 @@ body {
     margin-bottom: 0.25em;
 }
 
+a:link {
+    color: black;
+}
+a:visited {
+    color: darkgray;
+}
+
 h2 {
     margin-top: 0.5em;
     margin-bottom: 0.1em;
@@ -140,6 +147,11 @@ h2 {
 #roller-tray .selectable {
     margin-top: 1.25em;
     margin-bottom: 1.25em;
+}
+
+#roll-left {
+    text-align: center;
+    margin-bottom: 1em;
 }
 
 .hold {

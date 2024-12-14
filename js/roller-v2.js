@@ -208,6 +208,10 @@ function rollDices() {
     let modal = document.getElementById("roller-modal");
     modal.style.display = 'block';
 
+    document.getElementsByClassName("roll-again")[0].style.display = 'block';
+
+    roll_left = 3;
+
     animateDiceRoll();
 }
 
@@ -249,6 +253,17 @@ function getRandomIntInclusive(min, max) {
 function animateDiceRoll() {
 
     clearResults();
+
+    if( roll_left == 0 ) {        
+        return;
+    }
+
+    --roll_left;
+    document.getElementById("roll-left").textContent = `Roll left: ${roll_left}`;    
+
+    if( roll_left == 0 ) {        
+        document.getElementsByClassName("roll-again")[0].style.display = 'none';
+    }
 
     let id = null;
     
@@ -320,6 +335,8 @@ function animateDiceRoll() {
 
     //    console.log("animateDiceRoll end");
 }
+
+var roll_left = 2;
 
 function clearResults() {
     var resulttray = document.getElementById("results-tray");
